@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Header from "../components/header";
 
 const Container = styled.div`
   display: flex;
@@ -8,7 +9,11 @@ const Container = styled.div`
 `;
 
 const Home = () => {
-  return <Container>Home</Container>;
+  return (
+    <Container>
+      <Header />
+    </Container>
+  );
 };
 
 export default Home;
