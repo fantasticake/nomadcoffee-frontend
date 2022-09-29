@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import client from "../apollo";
+import { useSeeProfileQuery } from "../generated/graphql";
 import { tokenVar, useTokenVar } from "../variables";
 import Button from "./button";
+import Loading from "./loading";
 
 const Container = styled.div`
   display: flex;
@@ -29,20 +31,30 @@ const Btns = styled.div`
 
 const Header = () => {
   const token = useTokenVar();
+  const naviate = useNavigate();
+  const { data, loading } = useSeeProfileQuery();
 
   const logout = () => {
+    naviate("/");
     tokenVar("");
     localStorage.removeItem("token");
     client.clearStore();
   };
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <Container>
       <Link to={"/"}>
         <Logo>Nomad Coffee</Logo>
       </Link>
       {token ? (
         <Btns>
+          {!data?.seeProfile.result?.coffeeShop?.id && (
+            <Link to={"/add"}>
+              <Button>Create coffee shop</Button>
+            </Link>
+          )}
           <Button onClick={logout}>Logout</Button>
         </Btns>
       ) : (

@@ -88,7 +88,11 @@ const Login = () => {
       <Title>Login</Title>
       <Form onSubmit={handleSubmit(onValid)}>
         <Input {...register("email")} placeholder="email" />
-        <Input {...register("password")} placeholder="password" />
+        <Input
+          {...register("password")}
+          placeholder="password"
+          type={"password"}
+        />
         <Btn onSubmit={handleSubmit(onValid)}>Login</Btn>
       </Form>
     </Container>

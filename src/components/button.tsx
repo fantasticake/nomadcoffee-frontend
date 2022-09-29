@@ -4,8 +4,7 @@ import styled from "styled-components";
 const Btn = styled.button`
   background-color: ${props => props.theme.accent};
   color: white;
-  padding: 6px;
-  width: 80px;
+  padding: 6px 16px;
   border-radius: 10px;
 `;
 

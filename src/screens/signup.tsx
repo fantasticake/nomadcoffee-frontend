@@ -97,10 +97,12 @@ const Signup = () => {
         <Input
           {...register("password", { required: true })}
           placeholder="password"
+          type={"password"}
         />
         <Input
           {...register("passwordConfirm", { required: true })}
           placeholder="password confirm"
+          type={"password"}
         />
         <Btn onSubmit={handleSubmit(onValid)}>Signup</Btn>
       </Form>
